@@ -1,14 +1,10 @@
 package employee.demo.Mapper;
 
-import employee.demo.pojo.Employee;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import employee.demo.pojo.Employee;;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository
-@Mapper
-public interface EmployeeMapper {
-//    void save(Employee employee);
-    List<Employee> getEmps();
+public interface EmployeeMapper extends BaseMapper<Employee> {
 }

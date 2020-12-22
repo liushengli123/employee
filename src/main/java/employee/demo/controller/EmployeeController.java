@@ -16,9 +16,9 @@ public class EmployeeController {
 
     @RequestMapping("/test")
     @ResponseBody
-    public String test(){
+    public List<Employee> test(){
         List<Employee> employeeList = employeeService.getEmps();
         System.out.println(employeeList);
-        return "success";
+        return employeeList;
     }
 }
