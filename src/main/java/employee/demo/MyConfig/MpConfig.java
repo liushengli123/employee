@@ -9,11 +9,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 //  配置扫描mapper文件包
 @MapperScan("employee.demo.Mapper")
-public class MpConfig {
+public class MpConfig{
 
 //    乐观锁插件
     @Bean
@@ -42,4 +43,5 @@ public class MpConfig {
         performanceInterceptor.setFormat(true);
         return performanceInterceptor;
     }
+
 }
