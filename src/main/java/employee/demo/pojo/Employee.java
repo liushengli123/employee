@@ -3,6 +3,7 @@ package employee.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -12,9 +13,10 @@ public class Employee {
 //    mp自动生成主键id的策略
 //    此注解跟根据id做查询和修改息息相关，这些操作会将此id作为查询条件，不加此注解出现空指针异常
     @TableId(type = IdType.ID_WORKER)
-    Integer empId;
+    Long empId;
     String empName;
     String empGender;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     Date empBirth;
 //    设置自动生成创建时间
     @TableField(fill = FieldFill.INSERT)
