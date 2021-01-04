@@ -1,5 +1,4 @@
 package employee.demo.pojo;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +16,7 @@ public class Msg {
     private String msg;
 
     //用户要返回给浏览器的数据
-    private Map<String, Object> extend = new HashMap<String, Object>();
+    private Map<String, Object> extend = new HashMap<>();
 
     public static Msg success(){
         Msg result = new Msg();

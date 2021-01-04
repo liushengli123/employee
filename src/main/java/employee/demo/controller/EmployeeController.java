@@ -5,31 +5,21 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import employee.demo.Mapper.EmployeeMapper;
 import employee.demo.pojo.Employee;
 import employee.demo.pojo.Msg;
-import employee.demo.service.EmployeeService;
-import org.apache.ibatis.annotations.Update;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.jws.WebParam;
-import java.util.Iterator;
-import java.util.List;
 
-@Controller
+@RestController
 public class EmployeeController {
-    @Resource
-    EmployeeService employeeService;
     @Resource
     EmployeeMapper employeeMapper;
 
-    @RequestMapping("/list")
-    public String list(Model model,@RequestParam(defaultValue = "1",value = "pn") Integer pn){
+    @RequestMapping("/index")
+    public Msg list(@RequestParam(defaultValue = "1",value = "pn") Integer pn){
         Page<Employee> page=new Page<>(pn,3);
         IPage<Employee> iPage = employeeMapper.selectPage(page, null);
-        model.addAttribute("page",iPage);
-        return "list";
+        return Msg.success().add("pageInfo",iPage);
     }
 
     @RequestMapping("/list/{empId}")
@@ -39,15 +29,13 @@ public class EmployeeController {
     }
 
     @RequestMapping("/delete/{empId}")
-    public String delete(@PathVariable("empId") Long empId){
+    public Msg delete(@PathVariable("empId") Long empId){
         employeeMapper.deleteById(empId);
-        return "redirect:/list";
+        return Msg.success();
     }
 
     @RequestMapping("/save")
-    @ResponseBody
     public Msg save(Employee employee){
-        System.out.println(employee);
         employeeMapper.insert(employee);
         return Msg.success();
     }

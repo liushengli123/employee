@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 //  配置扫描mapper文件包
 @MapperScan("employee.demo.Mapper")
-public class MpConfig{
+public class MpConfig implements WebMvcConfigurer{
 
 //    乐观锁插件
     @Bean
